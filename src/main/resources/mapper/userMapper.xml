@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.qcadminserver.dao.loginDao">
+
+    <resultMap id="UserResultMap" type="com.example.qcadminserver.model.user">
+        <id column="id" property="user_id" jdbcType="INTEGER"/>
+        <result column="gender" property="user_gender" jdbcType="INTEGER"/>
+        <result column="role" property="user_role" jdbcType="INTEGER"/>
+        <result column="username" property="user_name" jdbcType="VARCHAR"/>
+        <result column="password" property="user_password" jdbcType="VARCHAR"/>
+        <result column="phone" property="user_phone" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+    <select id="findUser" resultType="user">
+        select *
+        from qc_user
+        where username = #{username};
+    </select>
+
+    <!--<update id="updateUserByUsername" parameterType="String">-->
+    <!--    update crrmb_user-->
+    <!--    set user_password = #{password}-->
+    <!--    where user_name = #{username};-->
+    <!--</update>-->
+
+    <insert id="insertUser" parameterType="user">
+        insert into qc_user (gender, role, username, password, phone, createdate) values (#{gender}, #{role}, #{username}, #{password}, #{phone}, #{createdate})
+    </insert>
+
+
+</mapper>
