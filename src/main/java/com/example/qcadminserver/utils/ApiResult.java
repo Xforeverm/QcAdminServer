@@ -1,4 +1,4 @@
-package com.example.utils;
+package com.example.qcadminserver.utils;
 
 import com.example.qcadminserver.enums.ResultCodeEnum;
 import lombok.Data;

@@ -1,5 +1,6 @@
 package com.example.qcadminserver;
 
+import com.example.qcadminserver.dao.dataDao;
 import com.example.qcadminserver.dao.loginDao;
 import com.example.qcadminserver.model.user;
 import org.junit.jupiter.api.Test;
@@ -14,6 +15,9 @@ class QcAdminServerApplicationTests {
     @Autowired
     loginDao loginDao;
 
+    @Autowired
+    dataDao dataDao;
+
     @Test
     void contextLoads() {
         user user = new user();
@@ -21,10 +25,13 @@ class QcAdminServerApplicationTests {
         user.setPassword("123456");
         user.setPhone("18511912092");
         user.setCreatedate(LocalDateTime.now());
-        System.out.println(loginDao.insertUser(user));
+        // System.out.println(loginDao.insertUser(user));
+        // System.out.println(loginDao.findUser("heihei"));
+    }
 
-
-        System.out.println(loginDao.findUser("heihei"));
+    @Test
+    void testContext(){
+        // System.out.println(dataDao.getAllData());
     }
 
 }

@@ -1,5 +1,7 @@
 package com.example.qcadminserver.model;
 
+import com.alibaba.excel.annotation.ExcelIgnore;
+import com.alibaba.excel.annotation.ExcelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,7 +16,9 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class crawler {
+    @ExcelIgnore
     private int id;
+    @ExcelProperty("")
     private String fee;
     private String impression;
     private String ctr;

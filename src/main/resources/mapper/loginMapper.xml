@@ -5,12 +5,12 @@
 <mapper namespace="com.example.qcadminserver.dao.loginDao">
 
     <resultMap id="UserResultMap" type="com.example.qcadminserver.model.user">
-        <id column="id" property="user_id" jdbcType="INTEGER"/>
-        <result column="gender" property="user_gender" jdbcType="INTEGER"/>
-        <result column="role" property="user_role" jdbcType="INTEGER"/>
-        <result column="username" property="user_name" jdbcType="VARCHAR"/>
-        <result column="password" property="user_password" jdbcType="VARCHAR"/>
-        <result column="phone" property="user_phone" jdbcType="VARCHAR"/>
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="gender" property="gender" jdbcType="INTEGER"/>
+        <result column="role" property="role" jdbcType="INTEGER"/>
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+        <result column="phone" property="phone" jdbcType="VARCHAR"/>
     </resultMap>
 
 
