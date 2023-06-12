@@ -14,5 +14,5 @@ public interface dataService {
 
     PageInfo<crawler> getAllData(int pageNum, int pageSize, String starttime, String endtime);
 
-    List<crawler> exportData(String starttime, String endtime);
+    List<crawler> getAllData(String starttime, String endtime);
 }

@@ -1,5 +1,6 @@
 package com.example.qcadminserver.controller;
 
+import com.alibaba.excel.EasyExcel;
 import com.example.qcadminserver.model.crawler;
 import com.example.qcadminserver.service.dataService;
 import com.example.qcadminserver.utils.ApiResult;
@@ -9,6 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -32,10 +36,22 @@ public class dataController {
         return ApiResult.fail("not found data");
     }
 
-    @GetMapping("/data/export")
-    public ApiResult exportData(String starttime, String endtime){
-        dataService.exportData(starttime,endtime);
-        return ApiResult.success();
+    @PostMapping("/data/export")
+    public void exportData(HttpServletResponse response, String starttime, String endtime){
+        ServletOutputStream servletOutputStream = null;
+        response.setContentType("application/vnd.ms-excel;charset=utf-8");
+        response.setHeader("Access-Control-Allow-Origin", "*");
+
+        List<crawler> allData = dataService.getAllData(starttime, endtime);
+        try {
+            servletOutputStream = response.getOutputStream();
+            EasyExcel.write(servletOutputStream, crawler.class)
+                    .sheet("datas")
+                    .doWrite(() -> allData);
+            servletOutputStream.close();
+        }catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
