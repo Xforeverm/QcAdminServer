@@ -41,6 +41,7 @@ public class dataController {
         ServletOutputStream servletOutputStream = null;
         response.setContentType("application/vnd.ms-excel;charset=utf-8");
         response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Content-disposition","attachment");
 
         List<crawler> allData = dataService.getAllData(starttime, endtime);
         try {
