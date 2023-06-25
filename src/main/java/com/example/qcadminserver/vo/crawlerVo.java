@@ -1,25 +1,21 @@
-package com.example.qcadminserver.model;
+package com.example.qcadminserver.vo;
 
 import com.alibaba.excel.annotation.ExcelIgnore;
 import com.alibaba.excel.annotation.ExcelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import java.time.LocalDateTime;
 
 /**
  * @author Xman
  * @version 1.0
- * @date 2023/6/11 13:29
+ * @date 2023/6/25 19:19
  */
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class crawler {
+public class crawlerVo {
     @ExcelIgnore
     private int id;
-    @ExcelProperty("记录时间")
-    private LocalDateTime time;
     @ExcelProperty("小红书消费数")
     private String fee;
     @ExcelProperty("小红书展现数")
@@ -36,12 +32,14 @@ public class crawler {
     private String initiativeMessageCpl;
     @ExcelProperty("企飞新增好友")
     private String add_customer;
-    @ExcelProperty("开口比")
-    private String initiativeRatio;
-    @ExcelProperty("添加比")
-    private String addRatio;
-    @ExcelProperty("添加成本")
-    private String addCost;
     @ExcelProperty("账号")
     private String account;
+    @ExcelProperty("记录时间")
+    private LocalDateTime time;
+    @ExcelIgnore
+    private Double initiativeRatio;
+    @ExcelIgnore
+    private Double addRatio;
+    @ExcelIgnore
+    private Double addCost;
 }
