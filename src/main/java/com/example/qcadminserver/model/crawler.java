@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
+import java.util.TreeSet;
 
 /**
  * @author Xman
@@ -15,7 +16,7 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class crawler {
+public class crawler implements Cloneable {
     @ExcelIgnore
     private int id;
     @ExcelProperty("记录时间")
@@ -44,4 +45,16 @@ public class crawler {
     private String addCost;
     @ExcelProperty("账号")
     private String account;
+
+    @Override
+    public crawler clone(){
+        try {
+            return (crawler) super.clone();
+        }catch (CloneNotSupportedException e){
+            // 不保存数据库
+            return new crawler(this.id, this.time, this.fee, this.impression, this.ctr, this.messageUser, this.initiativeMessage, this.messageConsultCpl, this.initiativeMessageCpl, this.add_customer, this.initiativeRatio, this.addRatio, this.addCost, this.account);
+        }
+
+    }
+
 }

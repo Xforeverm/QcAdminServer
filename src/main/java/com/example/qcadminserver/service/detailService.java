@@ -1,6 +1,5 @@
 package com.example.qcadminserver.service;
 
-import com.example.qcadminserver.dao.detailDao;
 import com.example.qcadminserver.model.crawler;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
